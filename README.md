@@ -1,0 +1,2 @@
+# busCoponCalculation
+バスの回数券の計算に考えたアルゴリズム
