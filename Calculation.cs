@@ -8,31 +8,17 @@ public class Calculation
     // 往復ボタンを押したときにユーザが入力した回数を2倍にして計算メソッドを呼び出す
     private void roundTrip_clicked(object sender, EventArgs e)
     {
-        int teikiPrice;
-        int.TryParse(this.oneWayPrice.Text, out teikiPrice);
-        int price;
-        if (false == int.TryParse(this.oneWayPrice.Text, out price))
+        int price = (int.TryParse(this.oneWayPrice.Text, out price)) ? price : price = 0;
+        price = (teiki.ContainsKey(price)) ? price : price = 0;
+        if (price <= 0)
         {
-            price = 0;
-            MessageBox.Show($"正しい片道料金を入力してください");
-        }
-        else if (teiki.ContainsKey(price) == false)
-        {
-            price = 0;
             MessageBox.Show($"正しい片道料金を入力してください");
         }
 
-        int count;
-        if (false == int.TryParse(this.oneWayCount.Text, out count))
+        int count = (int.TryParse(this.oneWayCount.Text, out count)) ? count * 2 : count = 0;
+        if (count <= 0)
         {
-            count = 0;
-            MessageBox.Show("正しい回数を入力してください");
-        }
-        count *= 2;
-
-        if (price > 0 && count > 0)
-        {
-            data = Calculation(price, count);
+            MessageBox.Show($"正しい回数を入力してください");
         }
 
     }
